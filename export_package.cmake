@@ -64,6 +64,8 @@ function(export_package package)
     file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/${package}Targets.cmake")
     export(TARGETS ${PACKAGE_TARGETS} ${PACKAGE_DEPENDS}
       APPEND FILE "${CMAKE_CURRENT_BINARY_DIR}/${package}Targets.cmake")
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${package}Targets.cmake"
+      DESTINATION ${CMAKECONFIG_INSTALL_DIR})
   endif()
 
   install(EXPORT ${package} DESTINATION ${CMAKECONFIG_INSTALL_DIR})
